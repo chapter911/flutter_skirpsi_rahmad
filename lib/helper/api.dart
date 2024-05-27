@@ -25,15 +25,12 @@ class Api {
       status: 'Mohon Tunggu',
       dismissOnTap: false,
     );
-    late String? username = Prefs.readString("username");
-    late String? apikey = Prefs.readString("apikey");
 
     BaseOptions options = BaseOptions(
-      baseUrl: "$baseUrl/$url",
+      baseUrl: "$apiUrl/$url",
       connectTimeout: const Duration(seconds: 30),
       receiveTimeout: const Duration(seconds: 30),
       contentType: "application/json;charset=utf-8",
-      headers: {"username": username, "apikey": apikey},
     );
 
     Dio dio = Dio(options);
@@ -41,7 +38,7 @@ class Api {
     Api? returnData;
 
     try {
-      Response response = await dio.get(url);
+      Response response = await dio.get("$apiUrl$url");
 
       if (response.statusCode == 200) {
         dynamic listData = response.data;
@@ -89,23 +86,19 @@ class Api {
       status: 'Mohon Tunggu',
       dismissOnTap: false,
     );
-    late String? username = Prefs.readString("username");
-    late String? apikey = Prefs.readString("apikey");
 
     BaseOptions options = BaseOptions(
-      baseUrl: "$baseUrl/$url",
-      connectTimeout: const Duration(seconds: 30),
-      receiveTimeout: const Duration(seconds: 30),
-      contentType: "application/json;charset=utf-8",
-      headers: {"username": username, "apikey": apikey},
-    );
+        baseUrl: "$apiUrl$url",
+        connectTimeout: const Duration(seconds: 30),
+        receiveTimeout: const Duration(seconds: 30),
+        contentType: "application/json;charset=utf-8");
 
     Dio dio = Dio(options);
 
     Api? returnData;
 
     try {
-      Response response = await dio.post(url, data: data);
+      Response response = await dio.post("$apiUrl$url", data: data);
 
       if (response.statusCode == 200) {
         dynamic listData = response.data;
@@ -121,6 +114,7 @@ class Api {
         returnData = Api.result(listData);
       }
     } catch (e) {
+      print(e);
       dynamic listData = {
         "status": "failed",
         "message": "Terdapat Masalah Saat Melakukan Koneksi ke Server",
@@ -153,15 +147,12 @@ class Api {
       status: 'Mohon Tunggu',
       dismissOnTap: false,
     );
-    late String? username = Prefs.readString("username");
-    late String? apikey = Prefs.readString("apikey");
 
     BaseOptions options = BaseOptions(
-      baseUrl: "$baseUrl/$url",
+      baseUrl: "$apiUrl/$url",
       connectTimeout: const Duration(seconds: 30),
       receiveTimeout: const Duration(seconds: 30),
       contentType: "application/json;charset=utf-8",
-      headers: {"username": username, "apikey": apikey},
     );
 
     Dio dio = Dio(options);
@@ -170,7 +161,7 @@ class Api {
 
     try {
       Response response = await dio.post(
-        url,
+        "$apiUrl$url",
         data: formData,
         options: Options(
           contentType: Headers.formUrlEncodedContentType,
