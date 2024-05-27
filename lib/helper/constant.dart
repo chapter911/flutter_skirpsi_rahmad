@@ -1,0 +1,5 @@
+import 'package:flutter/material.dart';
+
+const Color warnaPrimary = Color(0xFF17908d);
+
+String baseUrl = "https://rahmad.agungj.com/";
