@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:skripsi_rahmad/helper/constant.dart';
 import 'package:skripsi_rahmad/helper/sharedpreferences.dart';
 import 'package:skripsi_rahmad/login_page.dart';
+import 'package:skripsi_rahmad/page/admin/division_page.dart';
 import 'package:skripsi_rahmad/page/admin/karyawan_page.dart';
 
 class AdminPage extends StatefulWidget {
@@ -66,6 +67,52 @@ class _AdminPageState extends State<AdminPage> {
                             child: const Center(
                               child: Text(
                                 "KARYAWAN",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            InkWell(
+              onTap: () {
+                Get.to(() => const DivisionPage());
+              },
+              child: Card(
+                elevation: 10,
+                clipBehavior: Clip.antiAlias,
+                child: Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Flexible(
+                        flex: 2,
+                        child: Container(
+                          margin: const EdgeInsets.all(10),
+                          child: Image.asset(
+                            "assets/division.png",
+                            scale: 5,
+                          ),
+                        ),
+                      ),
+                      Flexible(
+                        flex: 1,
+                        child: Expanded(
+                          child: Container(
+                            color: warnaPrimary,
+                            height: double.maxFinite,
+                            child: const Center(
+                              child: Text(
+                                "DIVISI",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   color: Colors.white,
